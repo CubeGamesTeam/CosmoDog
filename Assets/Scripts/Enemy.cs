@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private DOTweenAnimation deathAnimation;
 
+    [SerializeField] private GameObject deathEffect;
+
+
+
     private void Update()
     {
         transform.Translate(Vector2.left * speed*Time.deltaTime);
@@ -16,6 +20,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Instantiate(deathEffect,transform.position,Quaternion.identity);
+            //uiCameraShake.DOPlay();
             Player.Instance.GetDamage(damage);
             DestroyEnemy();
         }

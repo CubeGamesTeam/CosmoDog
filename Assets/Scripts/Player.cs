@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int maxHealth = 10;
 
+    [SerializeField] private GameObject fireEffect;
+    [SerializeField] private GameObject fireObject;
+
     public Action<int> onHealthChanged;
     public Action onGameOver;
 
@@ -50,7 +53,8 @@ public class Player : MonoBehaviour
 
     private void PlayerMove(float increment)
     {
-        if(transform.position.y != 0)
+        Instantiate(fireEffect, fireObject.transform);
+        if (transform.position.y != 0)
         {
             targetPos = new Vector2(0, 0);
         }
@@ -69,7 +73,7 @@ public class Player : MonoBehaviour
             if (_health >= maxHealth)
             {
                 _health = maxHealth;
-            } 
+            }
             onHealthChanged?.Invoke(_health);
         }
         else

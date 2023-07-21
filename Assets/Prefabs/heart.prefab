@@ -433,7 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5458580973624462430}
   - component: {fileID: 5458580973624462424}
-  - component: {fileID: 5458580973624462427}
+  - component: {fileID: -1226694321412283916}
   - component: {fileID: -298940187831035889}
   m_Layer: 0
   m_Name: heart
@@ -484,7 +484,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1771282, y: 2.6517758}
   m_EdgeRadius: 0
---- !u!114 &5458580973624462427
+--- !u!114 &-1226694321412283916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,12 +493,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5458580973624462426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01de384d13966b54695efe64205a6b3b, type: 3}
+  m_Script: {fileID: 11500000, guid: e72f44fb133fa154aac12e35f7204d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: -1
-  speed: 7
+  speed: 8
   deathAnimation: {fileID: 6635009514796971964}
+  deathEffect: {fileID: 4569046032541823318, guid: bae0c3f2d003a1b428c996c5ce8b00cc, type: 3}
 --- !u!114 &-298940187831035889
 MonoBehaviour:
   m_ObjectHideFlags: 0

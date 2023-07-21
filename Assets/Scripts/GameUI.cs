@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private HeartPanel healthPanel;
     [SerializeField] private TMP_Text score;
     [SerializeField] private GameObject gameOverPanel;
+
+    [SerializeField] private DOTweenAnimation uiCameraShake;
 
     private void Awake()
     {
@@ -39,12 +42,18 @@ public class GameUI : MonoBehaviour
 
     private void RepaintHearts(int hp)
     {
+        uiCameraShake.DOPlayForward();
         healthPanel.CheckHearts(hp);  
     }
 
     private void RepaintScore(int num)
     {
         score.text = num.ToString();
+    }
+
+    private void CameraShake()
+    {
+        uiCameraShake.DOPlayForward();
     }
 
     public void GameOverUI()
