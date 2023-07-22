@@ -9,8 +9,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject deathEffect;
 
-
-
     private void Update()
     {
         transform.Translate(Vector2.left * speed*Time.deltaTime);
@@ -21,7 +19,6 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Instantiate(deathEffect,transform.position,Quaternion.identity);
-            //uiCameraShake.DOPlay();
             Player.Instance.GetDamage(damage);
             DestroyEnemy();
         }
@@ -29,16 +26,12 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("ScoreManager"))
         {
             deathAnimation.DOPlayForward();
-        }
-        
+        }   
     }
 
     public void DestroyEnemy()
     {
         Destroy(gameObject);
     }
-
-    
-
-
 }
+

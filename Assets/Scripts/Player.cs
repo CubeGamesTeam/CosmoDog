@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
     private Vector2 targetPos;
 
+    [SerializeField] private float playerOffsetX;
+
     [SerializeField] private float yIncrement;
 
     [SerializeField] private float speed;
@@ -37,6 +39,14 @@ public class Player : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
+    private void Start()
+    {
+
+        targetPos = transform.position;
+        playerOffsetX = targetPos.x;
+    }
+
     private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
@@ -56,11 +66,11 @@ public class Player : MonoBehaviour
         Instantiate(fireEffect, fireObject.transform);
         if (transform.position.y != 0)
         {
-            targetPos = new Vector2(0, 0);
+            targetPos = new Vector2(playerOffsetX, 0);
         }
         else
         {
-            targetPos = new Vector2(0, 0 + increment);
+            targetPos = new Vector2(playerOffsetX, 0 + increment);
         }   
     }
 

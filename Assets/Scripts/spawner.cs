@@ -7,9 +7,10 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemyVariants;
 
     private float timeBtwnSpawn;
-    public float startTimeBtwnSpawn;
-    public float decreaseTime;
+    public float startTimeBtwnSpawn = 1.5f;
+    public float decreaseTime = 0.05f;
     public float minTime = 0.65f;
+
 
     private void Update()
     {

@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        _recordScore = PlayerPrefs.GetInt("record");
         Player.Instance.onGameOver += GameOverScore;
     }
 
@@ -59,6 +60,11 @@ public class ScoreManager : MonoBehaviour
         if(_finalScore > _recordScore)
         {
             _recordScore = _finalScore;
+            PlayerPrefs.SetInt("record", _recordScore);
+
+            Progress.Instance.PlayerInfo.score = _recordScore;
+            Progress.Instance.Save();
+
         }
     }
 }

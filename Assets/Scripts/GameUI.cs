@@ -9,6 +9,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private HeartPanel healthPanel;
     [SerializeField] private TMP_Text score;
+
     [SerializeField] private GameObject gameOverPanel;
 
     [SerializeField] private DOTweenAnimation uiCameraShake;
@@ -31,13 +32,13 @@ public class GameUI : MonoBehaviour
 
         gameOverPanel.SetActive(false);
 
-        RepaintHearts(Player.Instance.health);
+        FirstRepaintHearts(Player.Instance.health);
         RepaintScore(ScoreManager.Instance.score);
     }
 
-    private void Update()
+    private void FirstRepaintHearts(int hp)
     {
-        
+        healthPanel.CheckHearts(hp);
     }
 
     private void RepaintHearts(int hp)
@@ -49,11 +50,6 @@ public class GameUI : MonoBehaviour
     private void RepaintScore(int num)
     {
         score.text = num.ToString();
-    }
-
-    private void CameraShake()
-    {
-        uiCameraShake.DOPlayForward();
     }
 
     public void GameOverUI()
