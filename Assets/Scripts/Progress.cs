@@ -16,7 +16,6 @@ public class PlayerInfo
 
 public class Progress : MonoBehaviour
 {
-
     [DllImport("__Internal")]
     private static extern void SaveExtern(string date);
 

@@ -7,6 +7,11 @@ mergeInto(LibraryManager.library, {
   },
 
 
+  AuthExtern: function () {
+    auth();
+  },
+
+
   GiveMePlayerData: function () {
     myGameInstance.SendMessage('Yandex', 'SetName', player.getName());
     myGameInstance.SendMessage('Yandex', 'SetPhoto', player.getPhoto("medium"));
@@ -40,14 +45,14 @@ mergeInto(LibraryManager.library, {
     player.getData().then(_date => {
       const myJSON = JSON.stringify(_date);
       myGameInstance.SendMessage('Progress', 'Load', myJSON);
-    })
+    });
   },
 
 
   SetToLeaderboard: function (value){
     ysdk.getLeaderboards()
     .then(lb => {
-      lb.setLeaderboardScore('Score', value);
+      lb.setLeaderboardScore('Score1', value);
     });
   },
 
