@@ -17,6 +17,14 @@ public class StartPanel : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
+    private void Update()
+    {
+        if (Input.GetButton("Submit"))
+        {
+            onStartButtonDown();
+        }
+    }
+
     //private void OnEnable()
     //{
     //    StartCoroutine(GetScore());

@@ -9,14 +9,11 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
     private Vector2 targetPos;
 
-    [SerializeField] private float playerOffsetX;
+    private float playerOffsetX;
 
     [SerializeField] private float yIncrement;
 
     [SerializeField] private float speed;
-
-    [SerializeField] private float maxHeight;
-    [SerializeField] private float minHeight;
 
     [SerializeField] private int _health = 5;
     public int health =>this._health;
@@ -42,35 +39,56 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
         targetPos = transform.position;
         playerOffsetX = targetPos.x;
     }
 
     private void Update()
     {
+        //каждый кадр перемещаем игрока из текущей позиции в таргет позицию с шагом скорость*время кадра
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.W) && transform.position.y < maxHeight)
+        //если игрок на одной из линий
+        if ((transform.position.y == yIncrement) || (transform.position.y == -yIncrement) || (transform.position.y == 0f))
         {
-            PlayerMove(yIncrement);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > minHeight)
-        {
-            PlayerMove(-yIncrement);
+            if (Input.GetAxisRaw("Vertical") > 0 && transform.position.y < yIncrement)
+            {
+                PlayerMove(yIncrement); //перемещение
+            }
+            else if (Input.GetAxisRaw("Vertical") < 0 && transform.position.y > -yIncrement)
+            {
+                PlayerMove(-yIncrement);
+            }
         }
     }
 
+    public void MobilePlayerMove(int direction)
+    {
+        if ((transform.position.y == yIncrement) || (transform.position.y == -yIncrement) || (transform.position.y == 0f))
+        {
+            if (direction > 0 && transform.position.y < yIncrement)
+            {
+                PlayerMove(yIncrement); //перемещение
+            }
+            else if (direction < 0 && transform.position.y > -yIncrement)
+            {
+                PlayerMove(-yIncrement);
+            }
+        }
+    }
+
+    //Метод для перемещения игрока, получает смещение по оси Y
     private void PlayerMove(float increment)
     {
         Instantiate(fireEffect, fireObject.transform);
-        if (transform.position.y != 0)
+
+        if (transform.position.y != 0)                              //если игрок не в центре
         {
-            targetPos = new Vector2(playerOffsetX, 0);
+            targetPos = new Vector2(playerOffsetX, 0);              //то задаём целевую позицию центральной линии
         }
-        else
+        else                                                        //иначе
         {
-            targetPos = new Vector2(playerOffsetX, 0 + increment);
+            targetPos = new Vector2(playerOffsetX, increment);  //задаем целевой позицией линию, в зависимости от полученного смещения
         }   
     }
 

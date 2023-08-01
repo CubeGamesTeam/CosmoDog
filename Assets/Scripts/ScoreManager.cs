@@ -53,6 +53,19 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void AddScore(int adding)
+    {
+        if (_score < maxScore)
+        {
+            _score += adding;
+        }
+        else
+        {
+            //Вы прошли игру!
+        }
+        onScoreChanged?.Invoke(_score);
+    }
+
     private void GameOverScore()
     {
         scoreCollider.enabled = false;

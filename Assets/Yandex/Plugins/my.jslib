@@ -2,19 +2,36 @@ mergeInto(LibraryManager.library, {
 
 
   Hello: function () {
-    window.alert("Hello, world!");
     console.log("Hello world!");
+  },
+
+  TryToInitYSDKFromUnity: function (){
+    initGame();
+  },
+
+  TryToGetPlayerFromUnity: function () {
+    console.log("TryToGetPlayerFromUnity!");
+    initPlayer();
+    //ysdk.getPlayer().then(_player => {player = _player; myGameInstance.SendMessage('InitScene', 'PlayerReady', 1); console.log(player.getName()); return player;});
+  },
+
+
+  TryToGetDeviceFromUnity: function () {
+    getTypeDevice();
+      //ysdk.deviceInfo.isDesktop().then(_deviceInfo => {deviceInfo = _deviceInfo; console.log(deviceInfo);})
   },
 
 
   AuthExtern: function () {
-    auth();
+    auth(); 
   },
 
 
   GiveMePlayerData: function () {
-    myGameInstance.SendMessage('Yandex', 'SetName', player.getName());
-    myGameInstance.SendMessage('Yandex', 'SetPhoto', player.getPhoto("medium"));
+    //myGameInstance.SendMessage('Yandex', 'SetName', player.getName());
+    //myGameInstance.SendMessage('Yandex', 'SetPhoto', player.getPhoto("small"));
+    myGameInstance.SendMessage('Yandex', 'SetName', playerName);
+    myGameInstance.SendMessage('Yandex', 'SetPhoto', playerIconSmall);
   },
 
 
@@ -42,10 +59,11 @@ mergeInto(LibraryManager.library, {
 
 
   LoadExtern: function () {
-    player.getData().then(_date => {
-      const myJSON = JSON.stringify(_date);
-      myGameInstance.SendMessage('Progress', 'Load', myJSON);
-    });
+    //player.getData().then(_date => {
+      //const myJSON = JSON.stringify(_date);
+      //myGameInstance.SendMessage('Progress', 'Load', myJSON);
+   // });
+    myGameInstance.SendMessage('Progress', 'Load', playerBestResult);
   },
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
+    [SerializeField] private int givenScore = 1;
     [SerializeField] private float speed;
     [SerializeField] private DOTweenAnimation deathAnimation;
 
@@ -18,6 +19,7 @@ public class Heart : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            ScoreManager.Instance.AddScore(givenScore);
             Instantiate(deathEffect,transform.position,Quaternion.identity);
             Player.Instance.GetDamage(damage);
             DestroyEnemy();

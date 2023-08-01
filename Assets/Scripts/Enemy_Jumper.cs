@@ -1,18 +1,23 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy_Jumper : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private int givenScore = 1;
     [SerializeField] private float speed;
+
+    private Vector2 targetPos;
+    [SerializeField] private float yIncrement;
+
     [SerializeField] private DOTweenAnimation deathAnimation;
 
     [SerializeField] private GameObject deathEffect;
 
     private void Update()
     {
-        transform.Translate(Vector2.left * speed*Time.deltaTime);
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
