@@ -2,12 +2,11 @@ using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using YG;
 
 public class GameUI : MonoBehaviour
 {
     public static GameUI Instance { get; private set; }
-
-    [SerializeField] public int deviceType;
 
     [SerializeField] private HeartPanel healthPanel;
     [SerializeField] private TMP_Text score;
@@ -24,7 +23,6 @@ public class GameUI : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            deviceType = PlayerPrefs.GetInt("deviceType");
             return;
         }
         Destroy(this.gameObject);
@@ -38,7 +36,7 @@ public class GameUI : MonoBehaviour
 
         gameOverPanel.SetActive(false);
 
-        if (deviceType > 0)
+        if (!YandexGame.EnvironmentData.isDesktop)
         {
             MobileUpButton.gameObject.SetActive(true);
             MobileDownButton.gameObject.SetActive(true);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using YG;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ScoreManager : MonoBehaviour
 
     public Action<int> onScoreChanged;
 
+    [SerializeField] private string LeaderboardName;
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        _recordScore = PlayerPrefs.GetInt("record");
+        _recordScore = YandexGame.savesData.scores;
         Player.Instance.onGameOver += GameOverScore;
     }
 
@@ -73,11 +76,10 @@ public class ScoreManager : MonoBehaviour
         if(_finalScore > _recordScore)
         {
             _recordScore = _finalScore;
-            PlayerPrefs.SetInt("record", _recordScore);
 
-            Progress.Instance.PlayerInfo.score = _recordScore;
-            Progress.Instance.Save();
-
+            YandexGame.savesData.scores = _recordScore;
+            YandexGame.SaveProgress();
+            YandexGame.NewLeaderboardScores(LeaderboardName, _recordScore);
         }
     }
 }

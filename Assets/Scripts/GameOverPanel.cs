@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using YG;
 
 public class GameOverPanel : MonoBehaviour
 {
     [SerializeField] private TMP_Text finalScore;
-    [SerializeField] private YandexInGame yandexInGame;
 
     [SerializeField] private GameObject MobileReloadButton;
     [SerializeField] private GameObject MobileMenuButton;
@@ -15,7 +15,8 @@ public class GameOverPanel : MonoBehaviour
 
     private void Awake()
     {
-        if(GameUI.Instance.deviceType > 0)
+        YandexGame.FullscreenShow();
+        if (!YandexGame.EnvironmentData.isDesktop)
         {
             menuText.gameObject.SetActive(false);
             tryagainText.gameObject.SetActive(false);
@@ -33,9 +34,7 @@ public class GameOverPanel : MonoBehaviour
 
     private void Start()
     {
-        finalScore.text = "Ñ÷¸ò: " + ScoreManager.Instance.finalScore.ToString();
-        yandexInGame.TryToRateGame();
-
+        finalScore.text = ScoreManager.Instance.finalScore.ToString();
     }
     private void Update()
     {
@@ -47,10 +46,6 @@ public class GameOverPanel : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
-        //else if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        //}
     }
 
     public void MobileReload()
