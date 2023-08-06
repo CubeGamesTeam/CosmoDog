@@ -47,9 +47,13 @@ MonoBehaviour:
   enemyVariants:
   - {fileID: 1567627566821250551, guid: 74798bc52605a3143b633f9cd13677d4, type: 3}
   - {fileID: 2396970255373815151, guid: e96ddc62b21787a44a05bca3d5fca472, type: 3}
-  - {fileID: 8296764572978917736, guid: d87d0b7ed29af5747a9f2216008d7451, type: 3}
+  - {fileID: 2396970255373815151, guid: 494f07380edf0444a9405072dd8e3869, type: 3}
   - {fileID: 8296764572978917736, guid: 9ca91d64247aa5e4aaf67c26cbbe80d4, type: 3}
   - {fileID: 8296764572978917736, guid: 88250adac9eb2fd468305f4c6433d5a0, type: 3}
+  - {fileID: 8296764572978917736, guid: d87d0b7ed29af5747a9f2216008d7451, type: 3}
+  - {fileID: 8296764572978917736, guid: cdb8167e3e936144b8d431be787ca33b, type: 3}
+  - {fileID: 8296764572978917736, guid: ee74e638c61f1d44892e2b5c30447a2f, type: 3}
+  - {fileID: 8296764572978917736, guid: db4d1936eb15ccc49bdf949d4fdc7585, type: 3}
   startTimeBtwnSpawn: 1.5
   decreaseTime: 0.05
   minTime: 0.65
