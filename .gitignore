@@ -16,6 +16,8 @@ sysinfo.txt
 /Assets/mcs.rsp*
 /Assets/csc.rsp*
 /Assets/Plugins/Personal*
+/Assets/YandexGame/WorkingData/*.yg
+/Assets/YandexGame/WorkingData/*.yg.meta
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
