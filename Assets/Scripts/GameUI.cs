@@ -12,9 +12,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private GameObject MobileUpButton;
     [SerializeField] private GameObject MobileDownButton;
-
     [SerializeField] private GameObject gameOverPanel;
-
     [SerializeField] private DOTweenAnimation uiCameraShake;
 
     private void Awake()
