@@ -1,6 +1,5 @@
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using YG;
 
@@ -36,7 +35,7 @@ public class GameUI : MonoBehaviour
 
         gameOverPanel.SetActive(false);
 
-        if (!YandexGame.EnvironmentData.isDesktop)
+        if (!YG2.envir.isDesktop)
         {
             MobileUpButton.gameObject.SetActive(true);
             MobileDownButton.gameObject.SetActive(true);

@@ -39,13 +39,11 @@ public class Enemy_Jumper : MonoBehaviour
         if (isOnLine)
         {
             int rand = Random.Range(0, 3);
-            Debug.Log($"Random value: {rand}");
 
             switch (rand)
             {
                 case 0:
                     targetPos = new Vector2(transform.position.x - 10, 0);
-                    Debug.Log("В нулях");
                     break;
                 case 1:
                     targetPos = new Vector2(transform.position.x - 10, yIncrement);

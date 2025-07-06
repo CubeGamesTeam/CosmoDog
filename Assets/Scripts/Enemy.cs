@@ -1,32 +1,32 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int damage = 1;
-    [SerializeField] private int givenScore = 1;
-    [SerializeField] private float speed;
-    [SerializeField] private DOTweenAnimation deathAnimation;
+    [SerializeField] private int _damage = 1;
+    [SerializeField] private float _speed;
+    [SerializeField] private DOTweenAnimation _deathAnimation;
 
-    [SerializeField] private GameObject deathEffect;
+    [SerializeField] private GameObject _deathEffect;
 
     private void Update()
     {
-        transform.Translate(Vector2.left * speed*Time.deltaTime);
+        transform.Translate(Vector2.left * _speed*Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Instantiate(deathEffect,transform.position,Quaternion.identity);
-            Player.Instance.GetDamage(damage);
+            Instantiate(_deathEffect,transform.position,Quaternion.identity);
+            Player.Instance.GetDamage(_damage);
             DestroyEnemy();
         }
         
         if (other.CompareTag("ScoreManager"))
         {
-            deathAnimation.DOPlayForward();
+            _deathAnimation.DOPlayForward();
         }   
     }
 

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using YG;
 
@@ -36,7 +33,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        _recordScore = YandexGame.savesData.scores;
+        _recordScore = YG2.saves.scores;
         Player.Instance.onGameOver += GameOverScore;
     }
 
@@ -48,11 +45,8 @@ public class ScoreManager : MonoBehaviour
             {
                 _score++;
             }
-            else
-            {
-                //Вы прошли игру!
-            }
             onScoreChanged?.Invoke(_score);
+            Debug.Log("Столкнулся с врагом!");
         }
     }
 
@@ -77,9 +71,9 @@ public class ScoreManager : MonoBehaviour
         {
             _recordScore = _finalScore;
 
-            YandexGame.savesData.scores = _recordScore;
-            YandexGame.SaveProgress();
-            YandexGame.NewLeaderboardScores(LeaderboardName, _recordScore);
+            YG2.saves.scores = _recordScore;
+            YG2.SaveProgress();
+            YG2.SetLeaderboard(LeaderboardName, _recordScore);
         }
     }
 }

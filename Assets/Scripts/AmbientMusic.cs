@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AmbientMusic : MonoBehaviour
@@ -14,6 +12,6 @@ public class AmbientMusic : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             return;
         }
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

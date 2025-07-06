@@ -6,15 +6,16 @@ public class LoadAfterGetData : MonoBehaviour
 {
     private void OnEnable()
     {
-        YandexGame.GetDataEvent += LoadGame;
+        YG2.onGetSDKData += LoadGame;
     }
     private void OnDisable()
     {
-        YandexGame.GetDataEvent -= LoadGame;
+        YG2.onGetSDKData -= LoadGame;
     }
 
     private void LoadGame()
     {
+        YG2.GameReadyAPI();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

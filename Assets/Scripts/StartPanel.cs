@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,46 +5,28 @@ using YG;
 
 public class StartPanel : MonoBehaviour
 {
-    [SerializeField] private TMP_Text recordText;
-    [SerializeField] private GameObject PlayerName;
-    [SerializeField] private GameObject PlayerIcon;
-
+    [SerializeField] private TMP_Text _recordText;
 
     private void Start()
     {
-        if (YandexGame.auth == true)
-        {
-            PlayerName.SetActive(true);
-            PlayerIcon.SetActive(true);
-        }
-        else
-        {
-            PlayerName.SetActive(false);
-            PlayerIcon.SetActive(false);
-        }
-        recordText.text = YandexGame.savesData.scores.ToString();
+        _recordText.text = YG2.saves.scores.ToString();
     }
 
     private void Update()
     {
         if (Input.GetButton("Submit"))
         {
-            onStartButtonDown();
+            OnStartButtonDown();
         }
     }
 
-    public void onStartButtonDown()
+    public void OnStartButtonDown()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
-    public void onAuthButtonDown()
-    {
-        YandexGame.AuthDialog();
-    }
-
     public void SwitchLang(string lang)
     {
-        YandexGame.SwitchLanguage(lang);
+        YG2.SwitchLanguage(lang);
     }
 }

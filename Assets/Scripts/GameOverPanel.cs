@@ -15,8 +15,7 @@ public class GameOverPanel : MonoBehaviour
 
     private void Awake()
     {
-        YandexGame.FullscreenShow();
-        if (!YandexGame.EnvironmentData.isDesktop)
+        if (!YG2.envir.isDesktop)
         {
             menuText.gameObject.SetActive(false);
             tryagainText.gameObject.SetActive(false);
@@ -40,6 +39,7 @@ public class GameOverPanel : MonoBehaviour
     {
         if (Input.GetButton("Submit"))
         {
+            YG2.InterstitialAdvShow();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (Input.GetButton("Cancel"))
@@ -50,6 +50,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void MobileReload()
     {
+        YG2.InterstitialAdvShow();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void MobileMainMenu()
